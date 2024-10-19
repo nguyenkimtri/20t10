@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Dành cho riêng bạn</title>
+	<link rel="shortcut icon" href="assets/lilywhite.ico" type="image/x-icon">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="https://kit.fontawesome.com/0112991ab2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<audio class="song" loop>
+		<source src="./assets/videoplayback.m4a"></source>
+	</audio>
+	<div class="position-absolute top-50 start-50 translate-middle" style="z-index: 100;display: none" id="fireworkBox">
+		<div class="fireworks"></div>
+	</div>
+
+	<div class="container" id="loading">
+		<div class="position-absolute top-50 start-50 translate-middle">
+			<div class="card">
+				<div class="card-body text-center">
+
+					<p class="card-title text-danger">Chọn tên của bạn</p>
+
+					<select id="mySelect" class="mb-3">
+						<option value="empty"></option>
+					    <option value="Mỹ Linh">Mỹ Linh</option>
+					    <option value="Trà Mi">Trà Mi</option>
+					    <option value="Trúc My">Trúc My</option>
+					    <option value="Bích Phương">Bích Phương</option>
+				  	</select>
+					
+					<button type="button" class="btn btn-primary w-100" id="NameBtn">Gửi</button>				
+				</div>
+			</div>
+		</div>
+
+		<div class="position-absolute bottom-0 start-50 translate-middle-x w-40" style="display: none;" id="alert1">
+			<div class="alert alert-danger" role="alert">Tên bạn là gì?</div>
+		</div>
+	</div>
+
+	<div class="container" id="main" style="display: none;">
+		<div class="row vine-flower justify-content-center">
+			<img src="./assets/vineFlower.png" class="img-fluid" style="max-width: 700px;">
+		</div>
+
+		<div class="position-absolute top-50 start-50 translate-middle" id="heartLoad">
+			<img src="./assets/heartLoading.gif" class="img-fluid">
+		</div>
+
+		<div class="position-absolute top-50 start-50 translate-middle" style="display: none;" id='play'>
+			<button class="btn btn-info text-light">Bật nhạc lên nào!</button>
+		</div>
+
+		<div class="position-absolute top-50 start-50 translate-middle message text-center" style="display: none;" id='message1'>
+			<p id="p1" style="display: none;"></p>
+			<p id="p2" style="display: none;">Bạn là một đoá hoa tươi thắm đang toả sáng<span class="ion--heart-sharp"></span></p>
+			<p id="p3" style="display: none;">Dù bạn mạnh mẽ hay dịu dàng, yểu điệu hay cá tính,... </p>
+			<p id="p4" style="display: none;">... hãy cứ sống như trái tim mách bảo và làm điều bạn thực sự khao khát</p>
+			<p id="p5" style="display: none;">Rồi những điều tích cực cũng sẽ đến và xua tan phiền muộn trong lòng bạn...</p>
+			<p id="p6" style="display: none;">Và nhân dịp 20/10 này...</p>
+			<p id="p7" style="display: none;">Chúng mình xin gửi đến bạn những lời chúc tốt đẹp nhất</p>
+			<p id="p8" style="display: none;">Chúc bạn luôn hạnh phúc, tự tin và yêu đời!</p>
+			<img src="./assets/rose2.gif" class="img-fluid" id="cake" style="display: none;">
+		</div>
+
+		<div class="position-absolute top-50 start-50 translate-middle" style="display: none" id='heart'>
+			<div id="heartBox">
+				<img src="./assets/heartFore.png" class="img-fluid position-absolute" style="z-index: 2; transform: scale(1.1); border-width: 0px;" id="picwhite">
+				<img src="./assets/Arisu.png" class="img-fluid" style="z-index: 3" id="img">
+			</div>
+		</div>
+
+	</div>
+
+	<div class="container" id="feedback" style="display: none;">
+		<div class="position-absolute top-50 start-50 translate-middle" id='feedbackBox'>
+			<div class="card">
+				<button class="btn m-0" id="closeBtn">
+					<i class='fas fa-window-close' style="font-size: 20px;"></i>	
+				</button>
+				<div class="card-body text-center">
+					<p class="card-title text-danger">Bạn cảm thấy món quà này như thế nào?</p>
+					<input type="text" class="card-text mb-3" id="resInput"/>
+					<p class="card-title text-danger">Hãy đánh giá trên thang từ 1 đến 5</p>
+					<div class="star-wrapper">
+					  <a href="#" class="fas fa-heart s1"></a>
+					  <a href="#" class="fas fa-heart s2"></a>
+					  <a href="#" class="fas fa-heart s3"></a>
+					  <a href="#" class="fas fa-heart s4"></a>
+					  <a href="#" class="fas fa-heart s5"></a>
+					</div>
+					<button type="button" class="btn btn-primary w-100" id="resBtn">Gửi</button>				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="fixed-bottom" id="candle" style="display: none">
+		<div class="row-auto text-center mb-4" style="display: none;" id="continue">
+			<button class="btn btn-danger text-light">Tiếp theo</button>
+		</div>
+
+		<div class="row row-cols-5 m-auto" style="max-width: 550px;">
+			<div class="col text-center">
+				<img src="./assets/candle.gif" class="img-fluid">
+			</div>
+			<div class="col text-center">
+				<img src="./assets/candle.gif" class="img-fluid">
+			</div>
+			<div class="col text-center">
+				<img src="./assets/candle.gif" class="img-fluid">
+			</div>
+			<div class="col text-center">
+				<img src="./assets/candle.gif" class="img-fluid">
+			</div>
+			<div class="col text-center">
+				<img src="./assets/candle.gif" class="img-fluid">
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="position-absolute bottom-0 start-0">
+		<p class="h6 text-light">@Boys</p>
+	</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+<script src="index.js"></script>
